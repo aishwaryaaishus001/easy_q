@@ -1,0 +1,133 @@
+Question,Module
+"Explain the axioms of probability with respect to sample space, event space, and probability measure.",1
+Explain Probability Density Function.,1
+Explain Discrete and Continuous Probabilities with examples.,1
+Explain Bayes' Theorem as a sequence of product and sum rules.,1
+Describe summary statistics for random variables.,1
+How does independence affect probability distributions?,1
+What is a probability space? Explain with an example.,1
+Explain the sum rule and product rule in probability theory.,1
+How does conditional probability relate to Bayes' Theorem?,1
+Describe different probability distributions used in machine learning.,1
+What is the concept of expectation in probability?,1
+Describe the difference between probability mass function (PMF) and probability density function (PDF).,1
+"What is the central limit theorem, and why is it important?",1
+Explain how covariance and correlation are related.,1
+What is the importance of the law of total probability?,1
+Describe the difference between parametric and non-parametric probability distributions.,1
+Explain how Bayesian inference is applied in machine learning.,1
+How does Markov property relate to probability models?,1
+How is Gradient Descent used for optimization?,2
+Explain the role of step size in Gradient Descent.,2
+What is momentum in Gradient Descent? Why is it useful?,2
+Explain stochastic gradient descent and its advantages.,2
+Explain how Lagrange Multipliers are used in constrained optimization.,2
+Describe convex optimization and its significance in machine learning.,2
+How is cross-validation used to assess generalization performance?,2
+Explain constrained optimization with an example.,2
+"What is the relationship between data, models, and learning?",2
+How does batch size affect Stochastic Gradient Descent?,2
+Describe the concept of line search in optimization.,2
+What is the significance of learning rate decay in gradient descent?,2
+How does adaptive learning rate methods like Adam improve optimization?,2
+Explain the trade-offs between first-order and second-order optimization methods.,2
+What is the role of constraint qualification in optimization?,2
+Describe the difference between projected gradient descent and unconstrained optimization.,2
+Explain how coordinate descent works in high-dimensional optimization problems.,2
+What is the role of convexity in ensuring optimization convergence?,2
+Explain how to estimate regression coefficients in multiple regression with examples.,3
+How to evaluate whether a parameter set works well for a model?,3
+Explain logistic regression in terms of probability theory.,3
+Explain the problem formulation in linear regression.,3
+How do you assess the accuracy of coefficient estimates in regression?,3
+What are the advantages and limitations of multiple linear regression?,3
+Give an overview of classification and its applications.,3
+Describe how K-Nearest Neighbors (KNN) is used for classification.,3
+What are the differences between linear and logistic regression?,3
+How does regularization improve linear regression models?,3
+What is the importance of residual analysis in regression?,3
+Explain how polynomial regression differs from linear regression.,3
+What is the difference between softmax regression and logistic regression?,3
+How do decision boundaries affect classification performance?,3
+What is the impact of dimensionality on regression models?,3
+Explain how regularization techniques prevent overfitting in regression.,3
+How does logistic regression handle categorical variables?,3
+What is the effect of removing highly correlated features from a dataset?,3
+Explain the geometry behind the separation of hyperplanes.,4
+Explain different methods to find out the margin of the hyperplane in SVM.,4
+How does a Support Vector Machine (SVM) classify data?,4
+What is the concept of margin in SVM? Why is it important?,4
+Explain the concept of kernels in SVM and their significance.,4
+How does PCA minimize the average reconstruction error?,4
+Describe how dimensionality reduction helps in classification.,4
+Find low-dimensional representations to minimize compression loss.,4
+How to maximize the variance of the low-dimensional code using a sequential approach?,4
+What are the geometric properties of hyperplanes used in SVM?,4
+Explain the concept of slack variables in soft-margin SVM.,4
+Describe the difference between primal and dual formulations in SVM.,4
+How does the hinge loss function work in SVM classification?,4
+What is the effect of different kernel functions on SVM performance?,4
+Describe how spectral clustering is used in dimensionality reduction.,4
+What are the advantages of using autoencoders for dimensionality reduction?,4
+Explain how Fisher’s Linear Discriminant (FLD) is used for feature selection.,4
+Describe the impact of non-linear dimensionality reduction on data representation.,4
+What is the difference between a probability measure and a probability mass function?,1
+Explain the concept of conditional independence with an example.,1
+What are Markov chains and how are they used in machine learning?,1
+How does Jensen’s inequality relate to probability and statistics?,1
+Explain the relationship between entropy and mutual information.,1
+What are probability generating functions and their significance?,1
+How does the Hessian matrix help in optimization?,2
+What is the significance of the Karush-Kuhn-Tucker (KKT) conditions in constrained optimization?,2
+Describe the difference between projected and proximal gradient descent.,2
+What is the role of Lagrange duality in constrained optimization?,2
+How does the Adam optimizer differ from standard gradient descent?,2
+What are the advantages and disadvantages of second-order optimization methods?,2
+What is the difference between linear and non-linear regression?,3
+Explain the concept of maximum likelihood estimation (MLE) in regression.,3
+How do support vector regression (SVR) and linear regression compare?,3
+What are the assumptions behind ordinary least squares regression?,3
+Explain how Bayesian regression differs from frequentist regression.,3
+How does principal component regression (PCR) work?,3
+What are the key differences between LDA (Linear Discriminant Analysis) and PCA?,4
+How does kernel PCA differ from standard PCA?,4
+Explain the concept of manifold learning in dimensionality reduction.,4
+What is the impact of the curse of dimensionality on machine learning models?,4
+Describe the use of t-SNE for dimensionality reduction.,4
+How does autoencoder-based dimensionality reduction compare to PCA?,4
+What is Fisher’s criterion and how is it used in feature selection?,4
+How does hierarchical clustering help in feature space reduction?,4
+What is the significance of the Mahalanobis distance in high-dimensional data?,4
+Explain the importance of sparsity in high-dimensional learning.,4
+How does spectral embedding differ from other dimensionality reduction techniques?,4
+What is the role of feature selection in reducing model complexity?,4
+What is the law of iterated expectations and how is it used in probability?,1
+Describe the concept of moment-generating functions in probability theory.,1
+How does the Chebyshev inequality help in probability estimation?,1
+Explain the concept of Markov’s inequality and its applications.,1
+What is the difference between joint and marginal probability distributions?,1
+How does a probability simplex help in probabilistic models?,1
+Describe the impact of different step-size schedules in gradient descent.,2
+What are quasi-Newton methods and how do they improve optimization?,2
+Explain the role of barrier methods in constrained optimization.,2
+What is the difference between convex and non-convex optimization?,2
+How do interior-point methods work for constrained optimization?,2
+What is the role of the Wolfe conditions in line search optimization?,2
+How do ridge regression and lasso regression differ in regularization?,3
+Explain the concept of heteroscedasticity in regression models.,3
+What is the impact of multicollinearity in multiple regression models?,3
+Describe the concept of an influence function in regression analysis.,3
+How does dropout regularization affect logistic regression?,3
+What is the difference between generative and discriminative classifiers?,3
+What is the role of Gaussian Processes in regression and classification?,4
+How does feature extraction differ from feature selection?,4
+Describe the impact of kernel selection in non-linear SVM classification.,4
+How does linear separability affect the performance of an SVM?,4
+What are the advantages of structured SVM models?,4
+Explain the significance of Laplacian Eigenmaps in dimensionality reduction.,4
+How does ICA (Independent Component Analysis) differ from PCA?,4
+What is the role of hyperparameter tuning in SVM performance?,4
+Explain the concept of Bayesian PCA and its advantages.,4
+What is the effect of different similarity measures in clustering-based dimensionality reduction?,4
+How does a supervised dimensionality reduction technique differ from an unsupervised one?,4
+Describe the role of non-negative matrix factorization (NMF) in feature learning.,4

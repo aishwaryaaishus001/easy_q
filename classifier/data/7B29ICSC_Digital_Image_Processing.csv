@@ -1,0 +1,121 @@
+Question,Module
+Define a digital image.,1
+What are pixels? Explain their role in digital images.,1
+Describe the spatial domain and matrix representation of a digital image.,1
+Explain the block diagram of fundamental steps in digital image processing.,1
+Discuss different applications of digital image processing.,1
+What are the key components of a digital image processing system?,1
+Explain image sensing and acquisition.,1
+What is image sampling and quantization? Why are they important?,1
+Describe the relationships between pixels in an image.,1
+Compare RGB and CMY color models.,1
+How do RGB and HSI color models differ?,1
+Explain the concept of color image fundamentals in DIP.,1
+What are different image formats used in digital image processing?,1
+Explain the concept of bit-plane slicing in image representation.,1
+Explain gray level transformations and their importance.,2
+What is histogram processing? Explain histogram equalization with an example.,2
+Describe different histogram enhancement techniques.,2
+What is image smoothing? Explain different smoothing techniques.,2
+Differentiate between smoothing and sharpening.,2
+Explain Gaussian smoothing and its applications.,2
+What are mean and median smoothing techniques?,2
+Describe spatial filtering and its types.,2
+Explain how spatial low-pass filters work in image smoothing.,2
+Discuss the use of weighted averaging in image enhancement.,2
+What are linear filters? Explain their role in DIP.,2
+What are non-linear filters? Explain any three non-linear filtering techniques.,2
+Explain maximum and minimum filters in image enhancement.,2
+What are spatial high-pass filters? How do they enhance an image?,2
+Explain unsharp masking and high-boost filtering.,2
+What is image degradation? Explain the degradation model.,3
+Discuss different noise models in image processing.,3
+Explain salt-and-pepper noise and methods to remove it.,3
+What are mean filters? How do they help in noise reduction?,3
+Describe order statistics filters in image restoration.,3
+Explain adaptive filtering and its applications.,3
+What are band-reject filters? How do they work?,3
+Explain band-pass and notch filters with applications.,3
+What is frequency rejection in image processing?,3
+Define image segmentation and its importance in DIP.,3
+Explain point detection and line detection in segmentation.,3
+Describe edge detection techniques and their role in segmentation.,3
+What is thresholding in segmentation? Explain with an example.,3
+Discuss region-based segmentation and its techniques.,3
+"Explain region growing, region splitting, and merging in segmentation.",3
+What is morphological processing? Describe its basic operations.,3
+Explain the concepts of erosion and dilation in morphological processing.,3
+Explain edge linking and boundary detection in image processing.,4
+How does edge-based segmentation work?,4
+Describe the importance of feature extraction in image analysis.,4
+Explain the different feature extraction techniques in DIP.,4
+How is Python used in digital image processing?,4
+Explain the role of OpenCV in digital image processing.,4
+What is the role of NumPy and SciPy in DIP?,4
+Explain the basic functions of the Python Imaging Library (PIL).,4
+"Describe the use of imread(), imshow(), convert(), and save() functions in Python.",4
+What is the importance of thumbnails in image processing?,4
+Explain how OpenCV handles image filtering and transformations.,4
+What are predefined image handling methods in Python?,4
+What are the main challenges in digital image processing?,4
+Describe various real-world applications of DIP.,4
+Explain different interpolation techniques used in image scaling.,4
+How do homomorphic filters improve image quality?,4
+Discuss the importance of image registration in DIP.,4
+Explain different types of noise that affect digital images.,4
+What is a contrast stretching technique? Explain its importance.,4
+Describe the role of Fourier Transform in image processing.,4
+How does template matching work in image recognition?,4
+Explain the use of wavelet transforms in image compression.,4
+Discuss the difference between lossy and lossless image compression.,4
+How is deep learning applied in digital image processing?,4
+What is the significance of spatial resolution in digital images?,1
+Define quantization. How does it affect image quality?,1
+Explain the concept of grayscale images and their representation.,1
+What is the difference between a bitmap and a vector image?,1
+Describe the concept of color depth and its impact on image quality.,1
+How does contrast stretching enhance an image?,2
+"What is adaptive histogram equalization, and how does it improve images?",2
+Explain the significance of the Laplacian filter in image sharpening.,2
+Compare and contrast mean filtering and median filtering.,2
+What are the effects of applying a high-pass filter to an image?,2
+How does Wiener filtering work in image restoration?,3
+What is the role of inverse filtering in restoring degraded images?,3
+Explain the significance of morphological gradient in image segmentation.,3
+How does Otsu’s method improve image segmentation?,3
+Discuss the concept of active contour models in segmentation.,3
+What are the key differences between edge detection and corner detection?,4
+How does template matching work in feature extraction?,4
+Explain the significance of Hough Transform in detecting lines and circles.,4
+What is the role of deep learning in feature extraction for image processing?,4
+How can OpenCV be used for face detection in images?,4
+What are the different types of digital images?,1
+Explain the concept of spatial resolution and intensity resolution.,1
+How does bit-depth affect image quality?,1
+What is the difference between lossy and lossless image compression?,1
+What is the significance of chromaticity in color images?,1
+Explain the concept of image enhancement in the frequency domain.,2
+What is a sharpening filter? How is it different from a smoothing filter?,2
+How do averaging filters improve image quality?,2
+Explain the concept of edge enhancement in image processing.,2
+Describe the effect of applying a median filter to an image.,2
+What are the different types of noise in digital images?,3
+Explain the importance of adaptive filters in image restoration.,3
+What is a motion blur? How can it be removed?,3
+Explain the concept of inverse filtering in image restoration.,3
+Describe the importance of edge detection in image segmentation.,3
+What is region adjacency graph (RAG) in segmentation?,3
+Explain the difference between global and local thresholding.,3
+What is a watershed algorithm in image segmentation?,3
+Describe how k-means clustering is used in image segmentation.,3
+What are the major challenges in image segmentation?,3
+Explain how to extract texture features from an image.,4
+What is the importance of feature descriptors in image analysis?,4
+Describe the concept of histogram of oriented gradients (HOG).,4
+Explain the difference between SIFT and SURF feature extraction techniques.,4
+What is the role of deep learning in feature extraction?,4
+How does OpenCV detect edges using the Canny edge detector?,4
+Explain the importance of Hough Transform in image feature extraction.,4
+Describe the use of the Fast Fourier Transform (FFT) in image analysis.,4
+What are the advantages of using OpenCV for real-time image processing?,4
+How can Python be used to perform morphological operations on an image?,4

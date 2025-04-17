@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.py[cod]
+*.ipynb_checkpoints
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Virtual env
+env/
+venv/
+*.env
+
+# Django stuff
+*.sqlite3
+/media/
+staticfiles/
+
+# Model files
+*.joblib
+*.pkl

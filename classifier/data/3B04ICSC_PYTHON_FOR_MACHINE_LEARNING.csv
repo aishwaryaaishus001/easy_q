@@ -1,0 +1,115 @@
+Question,Module
+How comments are included in python?,1
+What is the use of range function in python?,2
+What is the use of ones function NumPy?,4
+Mention any one function defined in sys module and specify its use.,3
+What is Overflow error?,3
+Write the syntax for opening a file in read mode in python.,3
+Explain how input can be accepted in python. Explain how formatted output can be achieved in python.,1
+Write about 4 built-in methods for lists in python.,1
+Write a program to check whether a year is leap year or not.,2
+Write a Python code to create a function called count_words that takes a string as input and prints the number of occurrences of each word.,2
+Explain about broadcasting in NumPy.,4
+Explain plotting methods in pandas.,4
+Explain about any 4 functions in os module.,3
+Explain different functions used to handle files in python.,3
+What is meant by mutable and immutable objects in python?,1
+Explain about exception handling in python.,3
+What are lambda functions? Write a program using lambda function to select numbers greater than 5 from a list.,2
+Write a Python code to determine whether the given string is a Palindrome or not using slicing. Do not use any string function.,2
+"Explain about reshape, transpose and resize function in python.",4
+Explain about arithmetic and data alignment operations in pandas.,4
+Explain in detail about lists and dictionaries in python.,1
+Explain about exception handling in python.,3
+Explain abut series and data frame in pandas. Explain how pandas can be used to read and write csv files with the help of an example.,4
+Explain how functions can be created in python? Write a Python program using functions to add two matrices and also find the transpose of the resultant matrix.,2
+Explain type () function.,1
+What is meant by lambda function?,2
+"What would be the output if I run the following code block? 
+list_1 = [2, 3, 4, 5, 14, 16] 
+print(list_1[-2])",1
+What is user defined exception?,3
+What is pandas ?,4
+What is the difference between / and // operator in Python ?,1
+Explain the definite and indefinite terations with suitable examples.,2
+Is indentation required in Python.,1
+How to combine dataframes in pandas ?,4
+"What is the purpose of is, not and in operators ?",1
+What do you mean by Python literals ?,1
+What is the purpose of range function in Python ? Explain with example.,2
+How can we done indexing in Numpy ?,4
+Explain how we will create an array using Numpy functions.,4
+Syntactic rules for define and calling a function in Python.,2
+Explain built in functions of tuple in Python.,1
+Write a recursive function for display Fibonacci series upto n in Python.,2
+Describe any five mathematical functions in Python.,1
+Explain built in functions of lists in Python.,1
+What are negative indexes and why are they used ?,1
+Discuss various arguments in Python with examples.,2
+Describe the various forms of if statements in Python.,2
+Explain all file processing modes supported in Python.,3
+Explain Exception handling in Python.,3
+What are the different ways to run a Python program?,1
+Differentiate between shallow copy and deep copy with an example.,1
+How are lists different from tuples in Python?,1
+Write a Python program to remove duplicates from a list.,1
+Explain the concept of *args and **kwargs in function arguments.,2
+Write a Python program using recursion to calculate factorial of a number.,2
+Explain how the zip() function works with an example.,2
+What are the differences between a function and a lambda function?,2
+"Explain break, continue, and pass statements with examples.",2
+How does exception handling improve program execution?,3
+What is the difference between try-except and try-finally in Python?,3
+Write a Python program to read a file and count the number of words.,3
+Explain os.path module functions for file path operations.,3
+Write a Python program to handle division by zero error using exception handling.,3
+What is NumPy? Explain its significance in Python programming.,4
+How does broadcasting work in NumPy arrays?,4
+Explain the difference between np.zeros() and np.ones() functions.,4
+How can we create a DataFrame in Pandas?,4
+What are indexing and slicing in Pandas?,4
+How do you perform group-by operations in Pandas?,4
+Explain the concept of vectorized operations in NumPy.,4
+How can we handle missing values in Pandas DataFrames?,4
+What is the significance of .loc[] and .iloc[] in Pandas?,4
+Write a Python program to check whether a string is an anagram or not.,2
+Write a Python program to find the second largest number in a list.,1
+What are the differences between is and == operators in Python?,1
+Write a Python program to count occurrences of each element in a list.,1
+Write a program to print all prime numbers up to n.,2
+What are the different ways to reverse a string in Python?,1
+Write a Python function to check whether a number is Armstrong or not.,2
+What is the difference between deepcopy() and copy() in Python?,1
+Write a Python program to merge two dictionaries.,1
+Explain the different methods for reading and writing files in Python.,3
+Write a Python program to rename a file using the os module.,3
+What is the purpose of with open() statement in Python?,3
+Write a Python program to extract numbers from a string using regular expressions.,1
+How can you shuffle the elements of a list randomly in Python?,1
+Write a Python program to flatten a nested list.,1
+"What is the difference between read(), readline(), and readlines() in Python?",3
+How can you check if a file exists before opening it in Python?,3
+Write a Python program to replace all occurrences of a substring in a string.,1
+Explain how to generate a NumPy array with random numbers.,4
+Write a Python program to compute the row-wise and column-wise sum of a NumPy array.,4
+What are the different ways to select a subset of a DataFrame in Pandas?,4
+How can we export a Pandas DataFrame to a CSV file?,4
+Write a Python program to plot a simple line graph using Matplotlib.,4
+"What are the differences between del, remove(), and pop() when working with lists?",1
+Write a Python program to generate Pascal's Triangle up to n rows.,2
+What are f-strings in Python? How are they different from format() and % formatting?,1
+Write a Python program to find the longest word in a text file.,3
+What are the different ways to concatenate two NumPy arrays?,4
+Write a Python function that accepts a list of numbers and returns the sum of even numbers.,2
+Explain the difference between shallow copy and deep copy with an example.,1
+Write a Python program to sort a list of dictionaries based on a specific key.,1
+What is the difference between a static method and a class method in Python?,2
+How can we apply multiple conditions while filtering a Pandas DataFrame?,4
+Write a Python program to display all possible permutations of a string.,1
+How does enumerate() work in Python? Give an example.,2
+Explain the differences between JSON and Pickle in Python.,3
+Write a Python program to create a NumPy array and reshape it into a 3D matrix.,4
+Explain the difference between @staticmethod and @classmethod in Python.,2
+What are the differences between Series and DataFrame in Pandas?,4
+Write a Python program to extract all email addresses from a text file using regex.,1
+What is the difference between .loc[] and .iloc[] in Pandas?,4
