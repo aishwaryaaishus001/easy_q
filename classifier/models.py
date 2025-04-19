@@ -17,3 +17,14 @@ class Question(models.Model):
 
     def __str__(self):
         return f"Paper: {self.paper}, Q: {self.text}... | Module: {self.module}"
+    
+class ClusteredQuestion(models.Model):
+    paper = models.CharField(max_length=100)
+    text = models.TextField()
+    module = models.IntegerField()
+    cluster_label = models.IntegerField()
+    difficulty = models.CharField(max_length=20, null=True, blank=True)
+
+    def __str__(self):
+        return self.text
+    
