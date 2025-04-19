@@ -1,3 +1,5 @@
+import json
+import numpy as np
 from django.db import models
 
 # Create your models here.
@@ -24,6 +26,16 @@ class ClusteredQuestion(models.Model):
     module = models.IntegerField()
     cluster_label = models.IntegerField()
     difficulty = models.CharField(max_length=20, null=True, blank=True)
+    embedding = models.TextField(null=True, blank=True)  # Store embeddings as JSON
+
+    def save_embedding(self, embedding):
+        # Convert numpy array to list and store it as a JSON string
+        self.embedding = json.dumps(embedding.tolist())
+
+    def get_embedding(self):
+        # Load the embedding from JSON and convert it back to numpy array
+        return np.array(json.loads(self.embedding)) if self.embedding else None
+
 
     def __str__(self):
         return self.text
