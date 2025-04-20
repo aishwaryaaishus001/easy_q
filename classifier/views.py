@@ -5,21 +5,32 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from . models import Question, ClusteredQuestion
+from collections import defaultdict
 import random
+
 
 
 # Create your views here.
 def home(request):
     return render(request, 'home.html')
 
-def generate_question_paper(request):
+'''def generate_question_paper(request):
     if request.method == 'POST':
         paper = request.POST.get('paper')
+        module1_marks = int(request.POST.get('module1'))
+        module2_marks = int(request.POST.get('module2'))
+        module3_marks = int(request.POST.get('module3'))
+        module4_marks = int(request.POST.get('module4'))
+
         print('paper: ', paper)
+        print('Module 1: ', module1_marks)
+        print('Module 2: ', module2_marks)
+        print('Module 3: ', module3_marks)
+        print('Module 4: ', module4_marks)
 
         # Filter questions by subject
         questions = ClusteredQuestion.objects.filter(paper=paper)
-        print('questions: ', questions)
+        #print('questions: ', questions)
 
         easy_qs = list(questions.filter(difficulty="easy"))
         moderate_qs = list(questions.filter(difficulty="medium"))
@@ -43,8 +54,8 @@ def generate_question_paper(request):
 
         random.shuffle(available_easy)
         random.shuffle(available_moderate)
-        print('\n\n\nAvailable easy: ', available_easy, '\n\n\n')
-        print('\n\n\nAvailable moderate: ', available_moderate, '\n\n\n')
+        #print('\n\n\nAvailable easy: ', available_easy, '\n\n\n')
+        #print('\n\n\nAvailable moderate: ', available_moderate, '\n\n\n')
 
         sectionC = []
 
@@ -72,14 +83,14 @@ def generate_question_paper(request):
 
 
         # print to verify structure
-        print("section C:", sectionC)
+        #print("section C:", sectionC)
 
 
 
 
-        print('section A: ', sectionA)
-        print('section B: ', sectionB)
-        print('section C: ', sectionC)
+        #print('section A: ', sectionA)
+        #print('section B: ', sectionB)
+        #print('section C: ', sectionC)
 
 
         context = {
@@ -92,7 +103,204 @@ def generate_question_paper(request):
 
     # Render form page on GET
     papers = ClusteredQuestion.objects.values_list('paper', flat=True).distinct()
+    return render(request, 'generate_question_paper.html', {'subject_codes': papers})'''
+
+def generate_question_paper(request):
+    if request.method == 'POST':
+        paper = request.POST.get('paper')
+        module_limits = {
+            1: int(request.POST.get('module1')),
+            2: int(request.POST.get('module2')),
+            3: int(request.POST.get('module3')),
+            4: int(request.POST.get('module4')),
+        }
+        module_used = defaultdict(int)
+        print('\n\nModule limits: ', module_limits, '\n\n')
+
+        def can_use(q, marks):
+            mod = q.module
+            return module_used[mod] + marks <= module_limits[mod]
+        
+        def can_use_group(group, marks_list):
+            """Check if a group of questions (with matching marks list) can be added."""
+            temp_usage = defaultdict(int)
+            for q, m in zip(group, marks_list):
+                temp_usage[q.module] += m
+            return all(module_used[mod] + temp_usage[mod] <= module_limits[mod] for mod in temp_usage)
+
+
+        # Get all questions for the paper
+        questions = ClusteredQuestion.objects.filter(paper=paper)
+
+        easy_qs = list(questions.filter(difficulty="easy"))
+        moderate_qs = list(questions.filter(difficulty="medium"))
+        difficult_qs = list(questions.filter(difficulty="difficult"))
+
+        # Shuffle for randomness
+        random.shuffle(easy_qs)
+        random.shuffle(moderate_qs)
+        random.shuffle(difficult_qs)
+
+        # ---------------- Section A: 6 questions × 4 marks ----------------
+        sectionA = []
+        for q in easy_qs + moderate_qs:
+            if len(sectionA) < 6 and can_use(q, 4):
+                sectionA.append(q)
+                module_used[q.module] += 4
+
+        # ---------------- Section B: 5 questions × 8 marks ----------------
+        sectionB = []
+        for q in difficult_qs + moderate_qs + easy_qs:
+            if len(sectionB) < 5 and can_use(q, 8):
+                sectionB.append(q)
+                module_used[q.module] += 8
+
+        # ---------------- Prepare available pools for Section C ----------------
+        used_in_A_and_B = set(sectionA + sectionB)
+        available_easy = [q for q in easy_qs if q not in used_in_A_and_B]
+        available_moderate = [q for q in moderate_qs if q not in used_in_A_and_B]
+        available_difficult = [q for q in difficult_qs if q not in used_in_A_and_B]
+
+        random.shuffle(available_easy)
+        random.shuffle(available_moderate)
+        random.shuffle(available_difficult)        
+
+        # ---------------- Section C: 5 questions × 12 marks ----------------
+        sectionC = []
+        # 3 Easy = 4+4+4 = 12
+        if len(available_easy) >= 3:
+            group = [available_easy.pop(), available_easy.pop(), available_easy.pop()]
+            if can_use_group(group, [4, 4, 4]):
+                sectionC.append(group)
+                for q in group:
+                    module_used[q.module] += 4
+            else:
+                # Return them back if not usable
+                available_easy.extend(group)
+
+        # 2 groups of (1 easy + 1 moderate)
+        for _ in range(2):
+            if len(available_easy) >= 1 and len(available_moderate) >= 1:
+                group = [available_easy.pop(), available_moderate.pop()]
+                if can_use_group(group, [4, 8]):
+                    sectionC.append(group)
+                    module_used[group[0].module] += 4
+                    module_used[group[1].module] += 8
+                else:
+                    available_easy.append(group[0])
+                    available_moderate.append(group[1])
+
+        # Remaining groups
+        while len(sectionC) < 5:
+            added = False
+
+            # Try 3 easy (12 marks)
+            group = []
+            for q in available_easy:
+                if can_use(q, 4):
+                    group.append(q)
+                    if len(group) == 3:
+                        break
+            if len(group) == 3:
+                for q in group:
+                    available_easy.remove(q)
+                    module_used[q.module] += 4
+                sectionC.append(group)
+                added = True
+
+            # Try (1 easy + 1 moderate)
+            elif len(available_easy) >= 1 and len(available_moderate) >= 1:
+                for e in available_easy:
+                    for m in available_moderate:
+                        if can_use(e, 4) and can_use(m, 8):
+                            available_easy.remove(e)
+                            available_moderate.remove(m)
+                            sectionC.append([e, m])
+                            module_used[e.module] += 4
+                            module_used[m.module] += 8
+                            added = True
+                            break
+                    if added:
+                        break
+
+            # Try 2 moderate (6+6)
+            elif len(available_moderate) >= 2:
+                for i in range(len(available_moderate)):
+                    for j in range(i + 1, len(available_moderate)):
+                        q1 = available_moderate[i]
+                        q2 = available_moderate[j]
+                        if can_use(q1, 6) and can_use(q2, 6):
+                            sectionC.append([q1, q2])
+                            module_used[q1.module] += 6
+                            module_used[q2.module] += 6
+                            available_moderate.remove(q1)
+                            available_moderate.remove(q2)
+                            added = True
+                            break
+                    if added:
+                        break
+
+            # Try 1 difficult (12 mark)
+            elif available_difficult:
+                for q in available_difficult:
+                    if can_use(q, 12):
+                        sectionC.append([q])
+                        module_used[q.module] += 12
+                        available_difficult.remove(q)
+                        added = True
+                        break
+
+            # --- RELAX MODULE MARK LIMITS ---
+            if not added:
+                print("⚠️ Strict limits exceeded. Relaxing module mark limits...")
+
+                # Try 1 moderate
+                if available_moderate:
+                    q = available_moderate.pop()
+                    sectionC.append([q])
+                    module_used[q.module] += 12
+                    added = True
+
+                # Try 1 difficult
+                elif available_difficult:
+                    q = available_difficult.pop()
+                    sectionC.append([q])
+                    module_used[q.module] += 12
+                    added = True
+
+                # Try 3 easy
+                elif len(available_easy) >= 3:
+                    group = [available_easy.pop(), available_easy.pop(), available_easy.pop()]
+                    sectionC.append(group)
+                    for q in group:
+                        module_used[q.module] += 4
+                    added = True
+
+                else:
+                    print("❌ No more questions left to fill Section C.")
+                    break
+
+
+
+        print('\n\nLength of Section A: ', len(sectionA))
+        print('\n\nLength of Section B: ', len(sectionB))
+        print('\n\nLength of Section C: ', len(sectionC), '\n\n')
+
+        # ✅ Pass data to template
+        context = {
+            'paper': paper,
+            'sectionA': sectionA,
+            'sectionB': sectionB,
+            'sectionC': sectionC,
+            'module_distribution': module_used,
+        }
+        return render(request, 'question_paper_generated.html', context)
+
+    # GET request
+    papers = ClusteredQuestion.objects.values_list('paper', flat=True).distinct()
     return render(request, 'generate_question_paper.html', {'subject_codes': papers})
+
+
 
 def history(request):
     # Placeholder for viewing previously generated papers

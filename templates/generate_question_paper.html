@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!--DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -25,4 +25,58 @@
   </div>
 
 </body>
+</html-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Generate Question Paper</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-white text-black">
+
+  <div class="container mx-auto py-10 text-center">
+    <form method="POST" action="{% url 'generate-question-paper' %}" class="mt-8">
+      {% csrf_token %}
+
+      <label for="subject_code" class="block text-xl font-semibold mb-2">Select Subject:</label>
+      <select name="paper" id="paper" class="border rounded px-4 py-2 mb-6">
+        {% for paper in subject_codes %}
+          <option value="{{ paper }}">{{ paper }}</option>
+        {% endfor %}
+      </select>
+
+      <h2 class="text-lg font-semibold mb-2 mt-6">Enter Mark Distribution (Including Options)</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-left max-w-md mx-auto">
+        <div>
+          <label for="module1" class="block font-medium mb-1">Module 1 Marks:</label>
+          <input type="number" name="module1" id="module1" min="0" class="border px-3 py-2 w-full rounded" required>
+        </div>
+
+        <div>
+          <label for="module2" class="block font-medium mb-1">Module 2 Marks:</label>
+          <input type="number" name="module2" id="module2" min="0" class="border px-3 py-2 w-full rounded" required>
+        </div>
+
+        <div>
+          <label for="module3" class="block font-medium mb-1">Module 3 Marks:</label>
+          <input type="number" name="module3" id="module3" min="0" class="border px-3 py-2 w-full rounded" required>
+        </div>
+
+        <div>
+          <label for="module4" class="block font-medium mb-1">Module 4 Marks:</label>
+          <input type="number" name="module4" id="module4" min="0" class="border px-3 py-2 w-full rounded" required>
+        </div>
+      </div>
+
+      <button type="submit" class="mt-8 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded">
+        Generate Question Paper
+      </button>
+    </form>
+  </div>
+
+</body>
 </html>
+

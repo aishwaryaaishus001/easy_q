@@ -3,14 +3,14 @@
 <h2 class="text-xl font-semibold mt-6 mb-2">Section A – (Answer any 5) – 5x4=20</h2>
 <ol>
   {% for q in sectionA %}
-    <li>{{ q }}</li>
+    <li>{{ q }} - {{q.module}} - {{q.difficulty}}</li>
   {% endfor %}
 </ol>
 
 <h2 class="text-xl font-semibold mt-6 mb-2">Section B – (Answer any 3) – 3x8=24</h2>
 <ol>
   {% for q in sectionB %}
-    <li>{{ q }}</li>
+    <li>{{ q }} - {{q.module}} - {{q.difficulty}}</li>
   {% endfor %}
 </ol>
 
@@ -21,11 +21,11 @@
       {% if sub_qs|length > 1 %}
         <ol style="list-style-type: lower-alpha;">
           {% for q in sub_qs %}
-            <li>{{ q }} </li>
+            <li>{{ q }} - {{q.module}} - {{q.difficulty}}</li>
           {% endfor %}
         </ol><br>
       {% else %}
-        {{ sub_qs.0 }}
+        {{ sub_qs.0 }} {{sub_qs.0.module}} - {{sub_qs.0.difficulty}}
       {% endif %}
     </li>
   {% endfor %}
