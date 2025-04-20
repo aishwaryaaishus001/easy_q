@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Teacher Dashboard - Easy Q</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+  <div class="container mx-auto py-16 text-center">
+    <h1 class="text-4xl font-bold mb-8">Welcome, {{ request.user.username }}</h1>
+
+    <div class="flex justify-center space-x-6">
+      <a href="{% url 'create-question-paper' %}" class="px-6 py-3 bg-green-500 hover:bg-green-600 text-white rounded shadow">
+        Generate Question Paper
+      </a>
+      <a href="{% url 'add-question' %}" class="px-6 py-3 bg-yellow-500 hover:bg-yellow-600 text-white rounded shadow">
+        Add Questions
+      </a>
+      <a href="{% url 'teacher-logout' %}" class="px-6 py-3 bg-red-500 hover:bg-red-600 text-white rounded shadow">
+        Logout
+      </a>
+    </div>
+  </div>
+
+</body>
+</html>

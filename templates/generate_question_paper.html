@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Generate Question Paper</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-white text-black">
+
+  <div class="container mx-auto py-10 text-center">
+    <form method="POST"  action="{% url 'generate-question-paper' %}" class="mt-8">
+      {% csrf_token %}
+      <label for="subject_code" class="block text-xl font-semibold mb-2">Select Subject:</label>
+      <select name="paper" id="paper" class="border rounded px-4 py-2">
+        {% for paper in subject_codes %}
+          <option value="{{ paper }}">{{ paper }}</option>
+        {% endfor %}
+      </select>
+      <br><br>
+      <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        Generate Question Paper
+      </button>
+    </form>
+
+  </div>
+
+</body>
+</html>

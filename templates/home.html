@@ -1,0 +1,26 @@
+<!-- templates/home.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Easy Q - Home</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+  <div class="container mx-auto py-16 text-center">
+    <h1 class="text-5xl font-bold mb-6">🎓 Easy Q</h1>
+    <p class="text-xl mb-10">Generate Question Papers Instantly</p>
+
+    <div class="flex justify-center space-x-6">
+      <a href="{% url 'teacher-login' %}" class="px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white rounded shadow">
+        Teacher Login
+      </a>
+      <a href="/admin/" class="px-6 py-3 bg-gray-700 hover:bg-gray-800 text-white rounded shadow">
+        Admin Login
+      </a>
+    </div>
+  </div>
+
+</body>
+</html>

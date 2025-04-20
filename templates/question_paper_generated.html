@@ -1,0 +1,33 @@
+<h1 class="text-3xl font-bold mb-4">Generated Question Paper ({{ paper }})</h1>
+
+<h2 class="text-xl font-semibold mt-6 mb-2">Section A – (Answer any 5) – 5x4=20</h2>
+<ol>
+  {% for q in sectionA %}
+    <li>{{ q }}</li>
+  {% endfor %}
+</ol>
+
+<h2 class="text-xl font-semibold mt-6 mb-2">Section B – (Answer any 3) – 3x8=24</h2>
+<ol>
+  {% for q in sectionB %}
+    <li>{{ q }}</li>
+  {% endfor %}
+</ol>
+
+<h2 class="text-xl font-semibold mt-6 mb-2">Section C – (Answer any 3) – 3x12=36</h2>
+<ol class="list-decimal ml-6">
+  {% for sub_qs in sectionC %}
+    <li class="mb-4">
+      {% if sub_qs|length > 1 %}
+        <ol style="list-style-type: lower-alpha;">
+          {% for q in sub_qs %}
+            <li>{{ q }} </li>
+          {% endfor %}
+        </ol><br>
+      {% else %}
+        {{ sub_qs.0 }}
+      {% endif %}
+    </li>
+  {% endfor %}
+</ol>
+

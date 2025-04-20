@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Question - Easy Q</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 text-gray-800 flex justify-center py-12">
+
+  <form method="POST" class="bg-white p-8 rounded shadow-md w-full max-w-xl">
+    {% csrf_token %}
+    <h2 class="text-2xl font-bold mb-6 text-center">Add a New Question</h2>
+
+    {% if messages %}
+      {% for message in messages %}
+        <p class="text-green-600 mb-4">{{ message }}</p>
+      {% endfor %}
+    {% endif %}
+
+    <textarea name="text" rows="4" placeholder="Question Text" class="w-full px-4 py-2 border rounded mb-4" required></textarea>
+    
+    <input type="text" name="module" placeholder="Module Name" class="w-full px-4 py-2 border rounded mb-4" required>
+
+    <input type="number" name="mark" placeholder="Mark (e.g. 2, 5, 10)" class="w-full px-4 py-2 border rounded mb-4" required>
+
+    <select name="difficulty" class="w-full px-4 py-2 border rounded mb-6" required>
+      <option value="" disabled selected>Select Difficulty</option>
+      <option value="easy">Easy</option>
+      <option value="moderate">Moderate</option>
+      <option value="difficult">Difficult</option>
+    </select>
+
+    <button type="submit" class="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600">Add Question</button>
+  </form>
+
+</body>
+</html>
