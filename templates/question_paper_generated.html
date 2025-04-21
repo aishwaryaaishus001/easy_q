@@ -14,20 +14,21 @@
   {% endfor %}
 </ol>
 
-<h2 class="text-xl font-semibold mt-6 mb-2">Section C – (Answer any 3) – 3x12=36</h2>
+<h2 class="text-xl font-semibold mt-6 mb-2">Section C – (Answer any 3) – 3×12 = 36</h2>
 <ol class="list-decimal ml-6">
-  {% for sub_qs in sectionC %}
+  {% for group in sectionC %}
     <li class="mb-4">
-      {% if sub_qs|length > 1 %}
+      {% if group|length > 1 %}
         <ol style="list-style-type: lower-alpha;">
-          {% for q in sub_qs %}
-            <li>{{ q }} - {{q.module}} - {{q.difficulty}}</li>
+          {% for q in group %}
+            <li>{{ q }} - {{ q.module }} - {{ q.difficulty|capfirst }}</li>
           {% endfor %}
         </ol><br>
       {% else %}
-        {{ sub_qs.0 }} {{sub_qs.0.module}} - {{sub_qs.0.difficulty}}
+        {{ group.0 }} - {{ group.0.module }} - {{ group.0.difficulty|capfirst }}
       {% endif %}
     </li>
   {% endfor %}
 </ol>
+
 
