@@ -24,9 +24,33 @@ CLUSTER_DIFFICULTY = {
     2: 'hard'
 }
 
+import nltk
+import string
+from nltk.corpus import stopwords
+from nltk.stem import WordNetLemmatizer
+
+# Load these once
+nltk.download('punkt')
+nltk.download('stopwords')
+nltk.download('wordnet')
+
+stop_words = set(stopwords.words("english"))
+lemmatizer = WordNetLemmatizer()
+
+def preprocess_text(text):
+    text = text.lower()
+    text = text.translate(str.maketrans('', '', string.punctuation))
+    tokens = nltk.word_tokenize(text)
+    cleaned_tokens = [lemmatizer.lemmatize(word) for word in tokens if word not in stop_words]
+    return " ".join(cleaned_tokens)
+
+
 def predict_difficulty(text, paper, module):
     try:
-        new_embedding = sbert_model.encode([text])[0]
+        # 🔁 Preprocess before encoding
+        cleaned_text = preprocess_text(text)
+        new_embedding = sbert_model.encode([cleaned_text])[0]
+
         existing_qs = ClusteredQuestion.objects.filter(paper=paper, module=module).exclude(embedding__isnull=True)
 
         if existing_qs.count() >= 3:
@@ -44,7 +68,7 @@ def predict_difficulty(text, paper, module):
             return {
                 'difficulty': difficulty,
                 'cluster_label': cluster_label,
-                'embedding': new_embedding.tolist()  # Convert to list for JSON safety
+                'embedding': new_embedding.tolist()
             }
 
         else:
