@@ -1,34 +1,177 @@
-<h1 class="text-3xl font-bold mb-4">Generated Question Paper ({{ paper }})</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Question Paper - {{ paper }}</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 
-<h2 class="text-xl font-semibold mt-6 mb-2">Section A – (Answer any 5) – 5x4=20</h2>
-<ol>
-  {% for q in sectionA %}
-    <li>{{ q }} - {{q.module}} - {{q.difficulty}}</li>
-  {% endfor %}
-</ol>
+  <style>
+    body {
+      font-family: 'Times New Roman', serif;
+      background-color: #e5e7eb;
+      margin: 0;
+    }
 
-<h2 class="text-xl font-semibold mt-6 mb-2">Section B – (Answer any 3) – 3x8=24</h2>
-<ol>
-  {% for q in sectionB %}
-    <li>{{ q }} - {{q.module}} - {{q.difficulty}}</li>
-  {% endfor %}
-</ol>
+    .paper {
+      width: 210mm; /* A4 width */
+      min-height: 297mm; /* A4 height */
+      background: white;
+      padding: 20mm;
+      margin: 0 auto;
+    }
 
-<h2 class="text-xl font-semibold mt-6 mb-2">Section C – (Answer any 3) – 3×12 = 36</h2>
-<ol class="list-decimal ml-6">
-  {% for group in sectionC %}
-    <li class="mb-4">
-      {% if group|length > 1 %}
-        <ol style="list-style-type: lower-alpha;">
-          {% for q in group %}
-            <li>{{ q }} - {{ q.module }} - {{ q.difficulty|capfirst }}</li>
+    .text-center {
+      text-align: center;
+    }
+
+    .question-list li,
+    .sub-question-list li {
+      font-size: 14px;
+      margin-bottom: 0.75rem;
+      break-inside: avoid;
+    }
+
+    .section-title {
+      font-size: 16px;
+      font-weight: bold;
+      margin-top: 10px;
+      margin-bottom: 8px;
+    }
+
+    .sub-question-list {
+      list-style-type: lower-alpha;
+      margin-left: 1.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .section {
+      page-break-inside: avoid;
+      margin-bottom: 1.5rem;
+    }
+
+    .page-break {
+      page-break-before: always;
+    }
+
+    @media print {
+      body {
+        margin: 0;
+      }
+
+      .paper {
+        padding: 20mm;
+      }
+
+      li {
+        break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Buttons Container -->
+<div class="w-full flex justify-end px-80 mt-4">
+  <div class="flex space-x-4">
+    <!-- Teacher Dashboard Button -->
+    <a href="/teacher/dashboard" class="bg-green-600 hover:bg-green-800 text-white font-bold py-2 px-6 rounded">
+      Teacher Dashboard
+    </a>   
+    <!-- Logout Button -->
+    <a href="/teacher/logout" class="bg-red-600 hover:bg-red-800 text-white font-bold py-2 px-6 rounded">
+      Logout
+    </a>
+  </div>
+</div>
+
+
+  <br><br>
+  <div id="question-paper" class="paper">
+    <div class="text-center mb-4">
+      <h1 style="font-size: 20px; font-weight: bold;">Institution Name</h1>
+      <p style="font-size: 16px;">Department of Computer Science</p>
+      <p style="font-size: 14px;">Examination: <span style="font-weight: bold;">{{ paper }}</span></p>
+      <p>Date: {{ date }} | Time: 3 Hours | Max Marks: 80</p>
+    </div>
+
+    <hr class="my-4 border-black">
+
+    <div class="paper-content">
+
+      <!-- Section A -->
+      <div class="section">
+        <h2 class="section-title">Section A – (Answer any 5)</h2>
+        <ol class="list-decimal ml-6 question-list">
+          {% for q in sectionA %}
+            <li>{{ q }}</li>
           {% endfor %}
-        </ol><br>
-      {% else %}
-        {{ group.0 }} - {{ group.0.module }} - {{ group.0.difficulty|capfirst }}
-      {% endif %}
-    </li>
-  {% endfor %}
-</ol>
+        </ol>
+      </div>
 
+      <!-- Section B -->
+      {% with counter=sectionA|length|add:1 %}
+      <div class="section">
+        <h2 class="section-title">Section B – (Answer any 3)</h2>
+        <ol start="{{ counter }}" class="list-decimal ml-6 question-list">
+          {% for q in sectionB %}
+            <li>{{ q }}</li>
+          {% endfor %}
+        </ol>
+      </div>
+      {% endwith %}
 
+      <!-- Section C -->
+      <div class="section">
+        <h2 class="section-title">Section C – (Answer any 3)</h2>
+        <ol start="12" class="list-decimal ml-6 question-list">
+          {% for group in sectionC %}
+            <li>
+              {% if group|length > 1 %}
+                <ol class="sub-question-list">
+                  {% for q in group %}
+                    <li>{{ q }}</li>
+                  {% endfor %}
+                </ol>
+              {% else %}
+                {{ group.0 }}
+              {% endif %}
+            </li>
+          {% endfor %}
+        </ol>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="text-center mt-6">
+    <button onclick="downloadPDF()" class="bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-6 rounded">
+      Download as PDF
+    </button><br><br>
+  </div>
+
+  <script>
+    function downloadPDF() {
+      const element = document.getElementById('question-paper');
+      const opt = {
+        margin: [0, 0, 0, 0],
+        filename: 'Question_Paper_{{ paper }}.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: {
+          scale: 2,
+          useCORS: true,
+          scrollY: 0
+        },
+        jsPDF: {
+          unit: 'mm',
+          format: 'a4',
+          orientation: 'portrait'
+        },
+        pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
+      };
+      html2pdf().set(opt).from(element).save();
+    }
+  </script>
+
+</body>
+</html>

@@ -10,5 +10,6 @@ urlpatterns = [
     path('teacher/logout/', views.teacher_logout, name='teacher-logout'),
     path('teacher/generate/', views.generate_question_paper, name='create-question-paper'),
     path('teacher/add/', views.add_question, name='add-question'),
+    path('teacher/add/predict_difficulty/', views.predict_difficulty_view, name='predict-difficulty')
     #path('history/', views.view_history, name='view-history'),
 ]
